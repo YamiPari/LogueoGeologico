@@ -3,9 +3,11 @@ import pandas as pd
 import csv
 import chardet
 import os
-
+import io
 import openpyxl
 from openpyxl.styles import PatternFill, Font
+import plotly.express as px
+
 
 def leer_csv(archivo):
     try:
@@ -259,7 +261,6 @@ alteration_df = leer_csv(alteration_file) if alteration_file else None
 mine_df = leer_csv(mine_file) if mine_file else None
 major_df = leer_csv(major_file) if major_file else None
 
-import io  # Necesario para manejar archivos en memoria
 
 # Función para descargar archivos
 def descargar_resultados(df, nombre_archivo):
@@ -390,9 +391,6 @@ if st.button("Validar Major", key="validate_major") and geology_file and major_f
         st.dataframe(resultados_major)
         descargar_resultados(resultados_major, "resultados_major.csv")
 
-
-
-import plotly.express as px
 
 
 # Lista de estándares a analizar
